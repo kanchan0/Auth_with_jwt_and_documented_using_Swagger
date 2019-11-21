@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hapi/glue": "^6.2.0",
     "bcrypt": "^3.0.6",
     "bluebird": "^3.7.1",
+    "dotenv": "^8.2.0",
     "good": "^8.1.2",
     "good-console": "^8.0.0",
     "hapi": "^18.1.0",
