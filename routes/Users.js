@@ -13,6 +13,38 @@ exports.plugin={
             }
 
         })
+
+        server.route({
+            method:"GET",
+            path:"/cookie",
+            handler:function(request,h){
+                let cookie = request.state.session
+                    if (!cookie) {
+                        cookie = {
+                        username: 'sammersagar@gmail.com',
+                        firstVisit: false
+                        }
+                    }
+                    cookie.lastVisit = Date.now()
+                    return h.response('Hello sammer sagar').state('session', cookie)
+            }
+        })
+
+        server.route({
+            method:"GET",
+            path:"/check_cookie",
+            handler:function(request,h){
+                return new Promise((resolve,reject)=>{
+                    const cookie = request.state.session
+                    if (cookie) {
+                    return resolve(h.response(cookie))
+                    } else{
+                        return resolve(h.response("no cookie has been setup"))
+                    }   
+                })
+            }
+        })
+
         server.route({
             method:'get',
             path:"/private",

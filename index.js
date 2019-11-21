@@ -9,6 +9,11 @@ const server = new Hapi.Server({
 })
 
 
+server.state('session', {  
+    ttl: 1000 * 60 * 60 * 1,    // 1 hour lifetime
+    encoding: 'base64json'      // cookie data is JSON-stringified and Base64 encoded
+  })
+
 const swaggerOptions = {
     info: {
         title: 'API Documentation',
